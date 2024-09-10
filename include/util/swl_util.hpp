@@ -14,11 +14,11 @@ namespace swl {
         }
 
         // strip leading 0x
-        if ('0' == hex[0] && 'x' == hex[1]) {
+        if ('x' == hex[1]) {
             hex = hex.substr(2);
         }
 
-        std::vector<char> bytes(hex.length() >> 2);
+        std::vector<char> bytes(hex.length() / 2);
 
         char byteStr[2];
 
@@ -26,9 +26,9 @@ namespace swl {
             byteStr[0] = hex[i];
             byteStr[1] = hex[i + 1];
 
-            bytes[i >> 2] = static_cast<char>(std::stoi(byteStr, nullptr, 16));
+            bytes[i / 2] = static_cast<char>(std::stoi(byteStr, nullptr, 16));
         }
-        
+
         return bytes;
     }
 }
