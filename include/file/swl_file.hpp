@@ -154,7 +154,7 @@ namespace swl {
         }
 
         /* fixed_file functions */
-        char operator[](size_t index) const {
+        char& operator[](size_t index) const {
             if (index >= mFilesize) {
                 throw std::out_of_range("swl::fixed_file::operator[]: index out of range");
             }
