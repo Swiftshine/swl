@@ -9,7 +9,11 @@
 namespace swl {
 
     std::vector<char> hex_to_bytes(std::string hex) {
-        if (0 != (hex.size() % 2)) {
+        if (0 == hex.length()) {
+            throw std::invalid_argument("swl::hex_to_bytes: hex string must not be empty");
+        }
+
+        if (0 != (hex.length() % 2)) {
             throw std::invalid_argument("swl::hex_to_bytes: hex string must be even in length");
         }
 
@@ -18,7 +22,7 @@ namespace swl {
             hex = hex.substr(2);
         }
 
-        std::vector<char> bytes(hex.length() / 2);
+        std::vector<char> bytes(hex.length() >> 1);
 
         char byteStr[2];
 
@@ -26,7 +30,7 @@ namespace swl {
             byteStr[0] = hex[i];
             byteStr[1] = hex[i + 1];
 
-            bytes[i / 2] = static_cast<char>(std::stoi(byteStr, nullptr, 16));
+            bytes[i >> 1] = static_cast<char>(std::stoi(byteStr, nullptr, 16));
         }
 
         return bytes;
