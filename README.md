@@ -6,3 +6,4 @@ If I've ever thought about making something useful easy to use but was never mot
 | thing | about |
 | - | - |
 | file dialog | simple file dialog function. windows-only at the moment. |
+| file | meant to be the representation of a file on disk |
